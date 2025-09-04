@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy 30th Birthday, My Qalbi ✨</title>
+  <meta name="description" content="Colorful birthday page with handwritten note, duas, a photo gallery, A–Z dua corner, hearts and snow." />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0a1024; --bg2:#111b3f; /* deep galaxy */
+      --text:#f8fbff; --muted:#cfe2ff;
+      --cyan:#22d3ee; --pink:#f472b6; --gold:#ffd166; --vio:#a78bfa; --lime:#84cc16; --orange:#fb923c;
+      --panel:#0f1b36; --radius:22px; --shadow:0 28px 60px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text); font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto;
+      background:
+        radial-gradient(1200px 800px at 110% -10%, rgba(34,211,238,.28), transparent 45%),
+        radial-gradient(900px 700px at -10% 110%, rgba(244,114,182,.28), transparent 55%),
+        radial-gradient(700px 600px at 50% 120%, rgba(167,139,250,.22), transparent 55%),
+        linear-gradient(180deg, var(--bg2), var(--bg1));
+      overflow-x:hidden;
+    }
+    /* twinkling starfield */
+    .stars::before,.stars::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; background-repeat:repeat}
+    .stars::before{
+      opacity:.6;
+      background-image:
+        radial-gradient(2px 2px at 20% 30%, #6ee7ff 80%, transparent 81%),
+        radial-gradient(2px 2px at 70% 60%, #f9a8d4 80%, transparent 81%),
+        radial-gradient(2px 2px at 40% 80%, #e5e7eb 80%, transparent 81%);
+    }
+    .stars::after{
+      opacity:.35;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, #e5e7eb 80%, transparent 81%),
+        radial-gradient(1px 1px at 80% 40%, #93c5fd 80%, transparent 81%),
+        radial-gradient(1px 1px at 50% 90%, #fcd34d 80%, transparent 81%);
+    }
+    .container{max-width:1100px;margin:auto;padding:24px}
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden; border-radius:var(--radius); padding:30px; box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(220px 220px at 15% 25%, rgba(132,204,22,.30), transparent 70%),
+        radial-gradient(260px 260px at 88% 80%, rgba(244,114,182,.30), transparent 70%),
+        radial-gradient(260px 260px at 30% 85%, rgba(34,211,238,.28), transparent 70%),
+        linear-gradient(135deg, rgba(255,209,102,.28), rgba(167,139,250,.28), rgba(34,211,238,.28));
+    }
+    .bismillah{font-family:"Scheherazade New",serif; font-size:24px; opacity:.95}
+    .headline{font-size:clamp(36px,7vw,56px); font-weight:900; margin:8px 0}
+    .headline .grad{-webkit-background-clip:text; background-clip:text; color:transparent;
+      background-image:linear-gradient(90deg, var(--gold), var(--cyan), var(--pink));}
+    .sub{color:var(--muted); font-size:16px}
+
+    /* SECTION */
+    .section{
+      margin-top:22px; border-radius:var(--radius); box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,.2);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      overflow:hidden;
+    }
+    .section h2{
+      margin:0; padding:16px 18px; font-size:18px; letter-spacing:.3px; color:#061126;
+      background:linear-gradient(90deg, rgba(255,209,102,.80), rgba(34,211,238,.80), rgba(244,114,182,.80), rgba(167,139,250,.8));
+      text-shadow:0 1px 0 rgba(255,255,255,.5);
+      display:flex; align-items:center; gap:10px;
+    }
+    .content{padding:18px}
+
+    /* HANDWRITTEN NOTE */
+    .note-card{background:linear-gradient(180deg, rgba(20,32,70,.95), rgba(14,24,52,.92)); border:1px dashed rgba(255,255,255,.38);
+      border-radius:18px; padding:16px}
+    .note{
+      font-family:"Dancing Script",cursive;
+      font-size:28px; line-height:1.5; white-space:pre-line; color:#fff; text-shadow:0 1px 0 rgba(255,255,255,.06);
+    }
+
+    /* DUAS */
+    .dua{border-radius:16px; padding:14px; margin-bottom:14px;
+      background:linear-gradient(135deg, rgba(34,211,238,.35), rgba(244,114,182,.35), rgba(255,209,102,.35));
+      border:1px solid rgba(255,255,255,.28);
+    }
+    .arabic{font-family:"Scheherazade New",serif; font-size:24px; line-height:1.9}
+    .trans{font-style:italic; color:#eaf2ff}
+    .tr{opacity:.96}
+
+    /* GALLERY */
+    .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(220px,1fr)); gap:14px}
+    .photo{background:#0f1833; border:1px solid rgba(255,255,255,.22); border-radius:16px; overflow:hidden; box-shadow:0 16px 32px rgba(0,0,0,.35)}
+    .photo img{width:100%; height:220px; object-fit:cover; display:block}
+    .cap{padding:10px 12px; font-size:15px; background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.02))}
+
+    /* A–Z */
+    .az-wrap{display:grid; grid-template-columns:repeat(auto-fill, minmax(48px,1fr)); gap:10px}
+    .az-btn{
+      height:48px; border-radius:12px; color:#fff; font-weight:900; font-size:18px; cursor:pointer;
+      border:1px solid rgba(255,255,255,.32);
+      background:linear-gradient(180deg, #0f1b36, #09122a);
+      box-shadow:0 10px 22px rgba(0,0,0,.35);
+    }
+    .az-note{color:#d9e8ff; font-size:13px; margin-top:10px}
+
+    /* MODAL */
+    .modal{position:fixed; inset:0; background:rgba(0,0,0,.55); display:none; align-items:center; justify-content:center; padding:16px; z-index:60}
+    .modal.open{display:flex}
+    .modal-card{max-width:760px; width:100%; background:#fff; color:#0b1020; border-radius:20px; box-shadow:0 28px 60px rgba(0,0,0,.55); overflow:hidden}
+    .modal-head{display:flex; justify-content:space-between; align-items:center; padding:16px 18px;
+      background:linear-gradient(90deg, var(--gold), var(--cyan), var(--pink), var(--vio)); font-weight:900}
+    .modal-body{padding:18px; font-size:18px; line-height:1.7}
+    .close{background:#0b1224; color:#fff; border:1px solid rgba(0,0,0,.15); border-radius:10px; padding:8px 12px; cursor:pointer}
+    .shake{animation:shake .5s ease}
+    @keyframes shake{10%,90%{transform:translateX(-1px)} 20%,80%{transform:translateX(2px)} 30%,50%,70%{transform:translateX(-4px)} 40%,60%{transform:translateX(4px)}}
+
+    /* HEARTS (tiny, red) */
+    .hearts{position:fixed; inset:0; pointer-events:none; z-index:70; overflow:hidden}
+    .heart{position:absolute; width:10px; height:10px;
+      background:linear-gradient(45deg,#ff6b6b,#ff1e56);
+      clip-path:path('M7 2 C7 0 4 -1 3 1 C2 -1 -1 0 -1 2 C-1 4 1 6 7 10 C13 6 15 4 15 2 C15 0 12 -1 11 1 C10 -1 7 0 7 2 Z');
+      opacity:.95; animation:fall 2.4s linear forwards}
+    @keyframes fall{0%{transform:translateY(-20px) scale(.9)}100%{transform:translateY(110vh) scale(1.05); opacity:0}}
+
+    /* SNOW */
+    .snow{position:fixed; inset:0; pointer-events:none; z-index:50; overflow:hidden}
+    .flake{position:absolute; top:-10px; width:6px; height:6px; border-radius:50%; background:#ffffff;
+      filter:drop-shadow(0 0 6px rgba(255,255,255,.6)); opacity:.9; animation:snowFall linear infinite}
+    @keyframes snowFall{to{transform:translateY(110vh)}}
+
+    footer{margin:26px 0; color:#dbe7ff; font-size:13px; text-align:center}
+    @media(max-width:520px){ .headline{font-size:42px} .note{font-size:26px} .modal-body{font-size:17px} }
+  </style>
+</head>
+<body class="stars">
+  <!-- Continuous Snow + Hearts -->
+  <div id="snow" class="snow" aria-hidden="true"></div>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <div class="container">
+    <!-- HERO -->
+    <header class="hero">
+      <div class="bismillah">﷽ Bismillāhir-Raḥmānir-Raḥīm</div>
+      <h1 class="headline">HAPPY <span class="grad">30TH</span> BIRTHDAY, <span class="grad">MY QALBI</span> 💖</h1>
+      <p class="sub">May Allah write for you a life of īmān, sakīnah, rizq-e-ḥalāl, mercy and love that grows with every sunrise. Āmīn.</p>
+    </header>
+
+    <!-- HANDWRITTEN NOTE -->
+    <section class="section">
+      <h2>📝 Handwritten Note from Me</h2>
+      <div class="content">
+        <div class="note-card">
+          <div class="note">
+Assalamu alaikum, mere Qalbi 💞
+
+Aaj apka 30th birthday hai. Meri dua ye hai ke Allah apku hamesha uski hifazat, rehmat aur barkat mein rakhe.
+App meri duaon ke sabse khoobsurat jawaab heen - meri sukoon, mera sahara, meri sabse badi daulat app hi.
+
+Jo bhi saal guzre, unmein app meri muskaan, meri dua, aur meri himmat rahe.
+Barakallahu laka fī ʿumrik, habibi. Āmīn.
+
+App meri dunya ki khushi aur akhirat ka armaan heen - Ameen, Allah apku bus khushiyaan de, Agai badate rahe, Mushkilath aye toh - allah apku hifazat kare and full himath, takath, Akhlaaq and bhaot sabar de wo mushkilath ku khatam karnai ka, Allah apku and manjy behtareeen jo aulad hai allah k nazar mai, waisi aulad allah hamna dendai - Aulaad ni AULYAADAAAN Dendai - Ameen.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DUAS -->
+    <section class="section">
+      <h2>🌙 Islamic Blessings</h2>
+      <div class="content">
+        <div class="dua">
+          <div class="arabic">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً</div>
+          <div class="trans">Wa min āyātihi an khalaqa lakum min anfusikum azwājan litaskunū ilayhā wa jaʿala baynakum mawaddatan wa raḥmah.</div>
+          <div class="tr">And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them; and He placed between you affection and mercy. — <em>Qur’an 30:21</em></div>
+        </div>
+        <div class="dua">
+          <div class="arabic">بارَكَ اللّٰهُ لَكَ فِي عُمۡرِكَ</div>
+          <div class="trans">Bārakallāhu laka fī ʿumrik.</div>
+          <div class="tr">May Allah bless your years and fill your life with His pleasure. Āmīn.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLIC GALLERY -->
+    <section class="section">
+      <h2>📸 Our Memories</h2>
+      <div class="content">
+        <div class="grid">
+          <div class="photo"><img src="/images/photo1.jpg" alt="Memory 1"><div class="cap">Our first memory together 💞</div></div>
+          <div class="photo"><img src="/images/photo2.jpg" alt="Memory 2"><div class="cap">Your smile, my peace ✨</div></div>
+          <div class="photo"><img src="/images/photo3.jpg" alt="Memory 3"><div class="cap">A special day, forever in my heart 💖</div></div>
+          <div class="photo"><img src="/images/photo4.jpg" alt="Memory 4"><div class="cap">The journey continues with love 🌙</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A–Z DUA CORNER -->
+    <section class="section">
+      <h2>🧿 A–Z Dua Corner</h2>
+      <div class="content">
+        <div id="azGrid" class="az-wrap" aria-label="A to Z duas"></div>
+        <p class="az-note">Tap a letter — a loving dua/message appears and tiny red hearts rain down 💗</p>
+      </div>
+    </section>
+
+    <footer>Made with ♥ by Reshma — May Allah keep our hearts gentle and grateful. Āmīn.</footer>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card shake" id="modalCard">
+      <div class="modal-head">
+        <div id="modalTitle">Dua</div>
+        <button class="close" id="closeModal">Close</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    /* Build continuous snowfall */
+    (function makeSnow(){
+      const snow = document.getElementById('snow');
+      const FLAKES = 140;
+      for(let i=0;i<FLAKES;i++){
+        const f = document.createElement('div');
+        f.className='flake';
+        const size = 2 + Math.random()*3;
+        f.style.width = f.style.height = size + 'px';
+        f.style.left = (Math.random()*100) + '%';
+        f.style.opacity = (0.5 + Math.random()*0.5).toFixed(2);
+        f.style.animationDuration = (6 + Math.random()*8) + 's';
+        f.style.animationDelay = (Math.random()*-14) + 's';
+        snow.appendChild(f);
+      }
+    })();
+
+    /* A–Z text */
+    const az = {
+      'A':'Allah’s Blessing — I made mistakes, chose wrong paths, but Allah still guided me right — and His greatest blessing was sending you, my Jaan, into my life.',
+      'B':'Barakah — With you, Qalbi, every day feels full of barakah, because Allah placed you beside me.',
+      'C':'Companion — From silly talks to deep ones, Allah made you my true sathi, the one my heart finds sakoon with.',
+      'D':'Duas — I raised my hands and asked Allah for goodness — He answered with you, my Habibi.',
+      'E':'Emaan — Your faith strengthens mine — without words, you remind me of Allah every single day.',
+      'F':'Fear (Taqwa) — Fear of Allah makes you think right and do good. My Jaan, this taqwa shines in you, and knowing you live to please Allah — that is the real peace for me.',
+      'G':'Gratitude — Alhamdulillah, every breath, every smile, I whisper shukr for having you, my Qalbi.',
+      'H':'Hidayah (Guidance) — We are not perfect, but with Allah’s hidayah and your love, Qalbi, I always find my way.',
+      'I':'Ikhlas (Sincerity) — Your smile, your words, your care — so pure. When you smile at me, my soul melts.',
+      'J':'Jannah — It’s our dream, Habibi — hand in hand, reunited there forever, InshaAllah.',
+      'K':'Kindness — Your kindness is like shade in the desert, easing every hardship.',
+      'L':'Love for Allah — Because you love Allah, my Jaan, you love me in the purest way.',
+      'M':'Mercy — Allah’s mercy is written in the way you protect me, forgive me, and hold me close.',
+      'N':'Nikkah — The day our souls were tied, I knew my life’s biggest blessing had begun.',
+      'O':'Obedience — Your strength in obeying Allah inspires me to obey more, my Jaan.',
+      'P':'Patience (Sabr) — You are my example of sabr, Habibi — smiling even when carrying the heaviest loads.',
+      'Q':'Qur’an — When you remind me of ayahs, Qalbi, my heart feels at home.',
+      'R':'Rizq — Allah wrote you in my rizq — my sweetest gift, my amanah, my Jaan.',
+      'S':'Salah (Prayer) — Praying beside you is dunya’s most beautiful sakoon.',
+      'T':'Tawakkul (Trust in Allah) — With you, Habibi, I learn to place everything in Allah’s hands.',
+      'U':'Understanding — The way you understand me, Noor-e-dil, is a softness only Allah could gift.',
+      'V':'Value — You are my most precious amanah, a treasure I pray to guard with ihsan.',
+      'W':'Warmth — Your hugs, your words, your presence — my safe place after Allah’s mercy.',
+      'X':'eXalted Allah — Allah, the Most High, chose you, my Jaan, to be my blessing — my heart’s crown.',
+      'Y':'Ya Allah — Thank You for writing Habibi in my qadr, for making him mine in this life and the next.',
+      'Z':'Zikr — Every zikr feels sweeter when my Qalbi is by my side.'
+    };
+
+    /* Elements */
+    const azGrid = document.getElementById('azGrid');
+    const modal   = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody  = document.getElementById('modalBody');
+    const modalCard  = document.getElementById('modalCard');
+    const closeModal = document.getElementById('closeModal');
+    const hearts = document.getElementById('hearts');
+
+    /* Build A–Z buttons */
+    function buildAZ(){
+      azGrid.innerHTML='';
+      Object.keys(az).forEach(l=>{
+        const b=document.createElement('button');
+        b.className='az-btn'; b.textContent=l; b.setAttribute('aria-label',`Open ${l} message`);
+        b.addEventListener('click',()=>openAZ(l));
+        azGrid.appendChild(b);
+      });
+    }
+
+    /* Open modal + rain hearts */
+    function openAZ(letter){
+      modalTitle.textContent=`${letter} — Dua`;
+      modalBody.textContent=az[letter];
+      modal.classList.add('open');
+      modalCard.classList.remove('shake'); void modalCard.offsetWidth; modalCard.classList.add('shake');
+      rainHearts();
+    }
+
+    function rainHearts(){
+      for(let i=0;i<40;i++){
+        const h=document.createElement('div'); h.className='heart';
+        h.style.left=(Math.random()*100)+'%';
+        h.style.animationDelay=(Math.random()*0.9)+'s';
+        h.style.opacity=.7 + Math.random()*.3;
+        hearts.appendChild(h);
+        setTimeout(()=>h.remove(),2500);
+      }
+    }
+
+    /* Close modal */
+    closeModal.addEventListener('click',()=>modal.classList.remove('open'));
+    modal.addEventListener('click',e=>{ if(e.target===modal) modal.classList.remove('open'); });
+
+    /* Init */
+    window.addEventListener('DOMContentLoaded', buildAZ);
+  </script>
+</body>
+</html>
